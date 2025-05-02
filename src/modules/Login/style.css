@@ -1,0 +1,48 @@
+.back-login {
+    min-height: 100vh;
+    height: auto;
+    background: linear-gradient(#5f0606, #000000);
+    padding: 100px;
+}
+
+.login {
+    border-radius: 15px;
+    width: 300px;
+    top: 150px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ba1515;
+    text-align: center;
+    color: white;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #ba1515;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.backendError {
+    color:red;
+    font-size: 12px;
+}
+
+.backendSuccess {
+    color:green;
+    font-weight: bold;
+}

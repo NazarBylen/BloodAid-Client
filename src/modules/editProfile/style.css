@@ -1,0 +1,33 @@
+.back-change {
+    min-height: 100vh;
+    height: auto;
+    background: linear-gradient(#400000, #000000);
+    padding: 100px;
+}
+
+.backendError {
+    color:red;
+    font-size: 12px;
+}
+
+.backendSuccess {
+    color:green;
+    font-weight: bold;
+}
+
+.custom-select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #aa0e0e; /* темно-червоний */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.custom-select:focus {
+    outline: none;
+    box-shadow: 0 0 5px #ff4d4d;
+    background-color: #bb1a1a;
+}

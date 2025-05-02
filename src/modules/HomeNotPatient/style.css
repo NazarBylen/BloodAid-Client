@@ -1,0 +1,47 @@
+.home-root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(#550000, #000000);
+  text-align: center;
+  padding: 0 20px;
+}
+
+.company-name {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 90px;
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.promo-text {
+  font-family: 'Arial Black', sans-serif;
+  color: #d0d0d0;
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
+.def-btn {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 20px;
+  border: none;
+  background-color: #c80000;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+  margin: 10px;
+  padding: 10px 30px;
+}
+
+.def-btn:hover {
+  background-color: #930000;
+}
