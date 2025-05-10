@@ -1,0 +1,50 @@
+.profile-root {
+    min-height: 100vh;
+    height: auto;
+    background: linear-gradient(#710303, #000000);
+}
+
+.info {
+    margin: 20px 170px;
+    font-family: 'Arial-Black', sans-serif;
+    font-size: 15px;
+    font-weight: lighter;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    text-align: left;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+}
+
+.donation-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    background: #1e1e1e;
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.donation-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.view-btn {
+    background-color: crimson;
+    border: none;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.view-btn:hover {
+    background-color: darkred;
+}

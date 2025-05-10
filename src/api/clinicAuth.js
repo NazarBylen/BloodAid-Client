@@ -13,9 +13,9 @@ export const GetClinicInfo = (id) => {
 }
 
 export const ChangeClinicPassword = (id, data) => {
-  return http.patch(`/auth/change-password-clinic/${id}`, data)
+  return http.patch(`/auth-clinic/change-password/${id}`, data)
 }
 
 export const DeleteClinic = (id) => {
-  return http.delete(`/auth/delete-clinic/${id}`)
+  return http.delete(`/auth-clinic/delete-clinic/${id}`)
 }

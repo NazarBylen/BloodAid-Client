@@ -3,7 +3,6 @@ import {useNavigate} from "react-router-dom";
 import "./style.css"
 import {useEffect, useState} from "react";
 
-
 const HomeNotPatient = () => {
     const navigate = useNavigate();
 
@@ -21,6 +20,14 @@ const HomeNotPatient = () => {
 
     const signup = () => {
         navigate("/clinic-signup")
+    }
+
+    const viewAllDonations = () => {
+        navigate("/all-donations")
+    }
+
+    const donations = () => {
+        navigate("/clinic-donations")
     }
 
     const back = () => {
@@ -51,6 +58,10 @@ const HomeNotPatient = () => {
                     <div>
                         <button onClick={clinicProfile} className="def-btn">Clinic Profile</button>
                         <button onClick={logout} className="def-btn">LOG OUT</button>
+                    </div>
+                    <div>
+                        <button onClick={donations} className="def-btn1">Clinic Donations</button>
+                        <button onClick={viewAllDonations} className="def-btn1">Available Donations</button>
                     </div>
                 </div>
                 :

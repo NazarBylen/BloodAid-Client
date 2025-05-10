@@ -1,0 +1,34 @@
+.date-picker-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    background-color: #000; /* чорний фон */
+    color: #fff;
+    border: 2px solid red;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.date-label {
+    color: red;
+    font-weight: bold;
+}
+
+.date-input {
+    padding: 6px 10px;
+    border: 2px solid red;
+    background-color: #111; /* темний фон для інпута */
+    color: white;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+}
+
+.date-input::placeholder {
+    color: #bbb;
+}
+
+.date-input:focus {
+    border-color: white;
+}
