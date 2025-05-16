@@ -1,6 +1,7 @@
 import {useNavigate} from "react-router-dom";
 
 import "./style.css"
+import PredictionForm from "../../components/blood_prediction/blood_prediction.jsx";
 
 
 const BaseHome = () => {
@@ -27,6 +28,9 @@ const BaseHome = () => {
                     <button onClick={patient} className="def-btn">I am patient</button>
                     <button onClick={clinic} className="def-btn">I am clinic</button>
                     <button onClick={donor} className="def-btn">I am donor</button>
+                </div>
+                <div className="container">
+                    <PredictionForm />
                 </div>
             </div>
         </div>
