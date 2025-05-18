@@ -25,10 +25,14 @@ import DonorChangePassword from "./modules/donorChangePassword/donorChangePasswo
 import EditDonorProfile from "./modules/editDonorProfile/editDonorProfile.jsx";
 import DonateBlood from "./modules/DonateBlood/DonateBlood.jsx";
 import DonationHistory from "./modules/DonationHistory/DonationHistory.jsx";
+import FAQPage from "./modules/FAQ/FAQPage.jsx";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
 
 const AppRoutes = () => {
     return (
-        <Routes>
+        <>
+            <ScrollToTop />
+            <Routes>
                 {/* Загальні сторінки */}
                 <Route path="/" element={<BaseHome />} />
                 <Route path="/signup" element={<Signup />} />
@@ -36,7 +40,7 @@ const AppRoutes = () => {
                 <Route path="/not-patient" element={<HomeNotPatient />} />
 
                 {/* Пацієнт */}
-                <Route path="/Home" element={<Home />} />
+                <Route path="/home" element={<Home />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/change-password" element={<ChangePassword />} />
                 <Route path="/edit-profile" element={<EditProfile />} />
@@ -62,8 +66,12 @@ const AppRoutes = () => {
                 <Route path="/donor/edit-profile" element={<EditDonorProfile />} />
                 <Route path="/donor/donate-blood" element={<DonateBlood />} />
                 <Route path="/donor/donation-history" element={<DonationHistory />} />
-        </Routes>
-    )
-}
+
+                {/* Інше */}
+                <Route path="/faq" element={<FAQPage />} />
+            </Routes>
+        </>
+    );
+};
 
 export default AppRoutes;

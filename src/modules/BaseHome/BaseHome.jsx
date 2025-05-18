@@ -19,6 +19,10 @@ const BaseHome = () => {
         navigate("/donor-home")
     }
 
+    const goToFAQ = () => {
+        navigate("/faq")
+    }
+
     return (
         <div className="container-fluid home-root">
             <div className="container">
@@ -30,8 +34,23 @@ const BaseHome = () => {
                     <button onClick={donor} className="def-btn">I am donor</button>
                 </div>
                 <div className="container">
-                    <PredictionForm />
+                    <PredictionForm/>
                 </div>
+                <div className="faq-wrapper">
+                    <button onClick={goToFAQ} className="faq-btn">FAQ</button>
+                </div>
+                <div className="social-links">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                        <img src="../../../svg/facebook.svg" alt="Facebook"/>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                        <img src="../../../svg/instagram.svg" alt="Instagram"/>
+                    </a>
+                    <a href="https://github.com/NazarBylen" target="_blank" rel="noopener noreferrer">
+                        <img src="../../../svg/github.svg" alt="GitHub"/>
+                    </a>
+                </div>
+
             </div>
         </div>
     )

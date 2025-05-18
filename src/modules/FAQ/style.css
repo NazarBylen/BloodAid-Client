@@ -1,0 +1,94 @@
+.faq-container {
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.85);
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    color: white;
+    animation: fadeIn 1s ease-in;
+    position: relative;
+    z-index: 1;
+}
+
+/* Додаємо до всього body анімований градієнт */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(-45deg, #1a0000, #330000, #1a0000, #000000);
+    background-size: 400% 400%;
+    animation: gradientAnimation 7s ease infinite;
+    min-height: 100vh;
+}
+
+/* Плавна зміна кольорів */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.faq-title {
+    text-align: center;
+    font-size: 36px;
+    color: #ff1a1a;
+    margin-bottom: 40px;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faq-item {
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    border: 1px solid #ff1a1a;
+}
+
+.faq-item:hover {
+    box-shadow: 0 0 12px rgba(255, 26, 26, 0.6);
+    transform: translateY(-2px);
+}
+
+.faq-question {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+    margin-top: 10px;
+    color: #e5e5e5;
+    font-size: 16px;
+}
+
+.faq-item.open .faq-answer {
+    max-height: 200px;
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

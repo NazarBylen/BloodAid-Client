@@ -9,9 +9,6 @@ export default function PredictionForm() {
         day_of_week: 0,
         season: 0,
         holidays: 0,
-        accidents: 0,
-        operations: 0,
-        donors: 0,
     });
 
     const [result, setResult] = useState(null);
@@ -25,20 +22,16 @@ export default function PredictionForm() {
     };
 
     const handlePredict = async () => {
-        const input = [
-            formData.day_of_week,
-            formData.season,
-            formData.holidays,
-            formData.accidents,
-            formData.operations,
-            formData.donors,
-        ];
-
         try {
-            const response = await axios.post('http://localhost:3001/api/predict', { input });
-            setResult(response.data.prediction);
+            const response = await axios.post('http://localhost:3001/api/blood-prediction/predict', {
+                day_of_week: formData.day_of_week,
+                season: formData.season,
+                holidays: formData.holidays,
+            });
+            setResult(response.data);
         } catch (error) {
             console.error('Помилка при запиті:', error);
+            setResult(null);
         }
     };
 
@@ -68,19 +61,19 @@ export default function PredictionForm() {
                     onChange={handleChange}
                     options={['Ні', 'Так']}
                 />
-                <NumberInput label="Нещасні випадки" name="accidents" value={formData.accidents} onChange={handleChange} />
-                <NumberInput label="Операції" name="operations" value={formData.operations} onChange={handleChange} />
-                <NumberInput label="Кількість донорів" name="donors" value={formData.donors} onChange={handleChange} />
             </div>
 
             <button onClick={handlePredict} className="predict-button">
                 Прогноз
             </button>
 
-            {result !== null && (
-                <p className="result-text">
-                    Очікуваний попит: <span className="result-value">{result.toFixed(2)} літрів</span>
-                </p>
+            {result && (
+                <div className="result-text">
+                    <p>Очікуваний попит: <span className="result-value">{result.demand.toFixed(2)} літрів</span></p>
+                    <p>Нещасні випадки: {result.accidents.toFixed(2)}</p>
+                    <p>Операції: {result.operations.toFixed(2)}</p>
+                    <p>Кількість донорів: {result.donors.toFixed(2)}</p>
+                </div>
             )}
         </div>
     );
@@ -106,22 +99,6 @@ function SelectInput({ label, name, value, onChange, options }) {
     );
 }
 
-function NumberInput({ label, name, value, onChange }) {
-    return (
-        <div className="input-group">
-            <label className="input-label">{label}</label>
-            <input
-                type="number"
-                name={name}
-                value={value}
-                onChange={onChange}
-                className="input-field"
-            />
-        </div>
-    );
-}
-
-
 SelectInput.propTypes = {
     label: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -129,11 +106,3 @@ SelectInput.propTypes = {
     onChange: PropTypes.func.isRequired,
     options: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
-
-NumberInput.propTypes = {
-    label: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    value: PropTypes.number.isRequired,
-    onChange: PropTypes.func.isRequired,
-};
-
