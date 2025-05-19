@@ -1,14 +1,13 @@
 import axios from 'axios';
 import { useState } from 'react';
 import PropTypes from "prop-types";
-
-import './style.css'
+import './style.css';
 
 export default function PredictionForm() {
     const [formData, setFormData] = useState({
-        day_of_week: 0,
-        season: 0,
-        holidays: 0,
+        month: 0,
+        region: 0,
+        year: 2024,
     });
 
     const [result, setResult] = useState(null);
@@ -24,9 +23,9 @@ export default function PredictionForm() {
     const handlePredict = async () => {
         try {
             const response = await axios.post('http://localhost:3001/api/blood-prediction/predict', {
-                day_of_week: formData.day_of_week,
-                season: formData.season,
-                holidays: formData.holidays,
+                month: formData.month,
+                region: formData.region,
+                year: formData.year,
             });
             setResult(response.data);
         } catch (error) {
@@ -39,29 +38,27 @@ export default function PredictionForm() {
         <div className="prediction-container">
             <h2 className="prediction-title">Прогноз попиту на кров</h2>
 
-            <div>
-                <SelectInput
-                    label="День тижня"
-                    name="day_of_week"
-                    value={formData.day_of_week}
-                    onChange={handleChange}
-                    options={['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Нд']}
-                />
-                <SelectInput
-                    label="Пора року"
-                    name="season"
-                    value={formData.season}
-                    onChange={handleChange}
-                    options={['Зима', 'Весна', 'Літо', 'Осінь']}
-                />
-                <SelectInput
-                    label="Святковий день?"
-                    name="holidays"
-                    value={formData.holidays}
-                    onChange={handleChange}
-                    options={['Ні', 'Так']}
-                />
-            </div>
+            <SelectInput
+                label="Місяць"
+                name="month"
+                value={formData.month}
+                onChange={handleChange}
+                options={['Січ', 'Лют', 'Бер', 'Квіт', 'Трав', 'Черв', 'Лип', 'Серп', 'Вер', 'Жовт', 'Лист', 'Груд']}
+            />
+            <SelectInput
+                label="Регіон"
+                name="region"
+                value={formData.region}
+                onChange={handleChange}
+                options={['Київ', 'Львів', 'Тернопіль']}
+            />
+            <SelectInput
+                label="Рік"
+                name="year"
+                value={formData.year}
+                onChange={handleChange}
+                options={['2023', '2024', '2025']}
+            />
 
             <button onClick={handlePredict} className="predict-button">
                 Прогноз
@@ -83,14 +80,9 @@ function SelectInput({ label, name, value, onChange, options }) {
     return (
         <div className="input-group">
             <label className="input-label">{label}</label>
-            <select
-                name={name}
-                value={value}
-                onChange={onChange}
-                className="select-field"
-            >
+            <select name={name} value={value} onChange={onChange} className="select-field">
                 {options.map((opt, idx) => (
-                    <option key={idx} value={idx}>
+                    <option key={idx} value={name === 'year' ? parseInt(opt) : idx}>
                         {opt}
                     </option>
                 ))}
