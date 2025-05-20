@@ -22,22 +22,3 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-.submit-btn {
-    font-size: 25px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 20px;
-    border: none;
-    background-color: #400000;
-    color: #ffffff;
-    cursor: pointer;
-    transition: background-color 0.4s ease;
-    margin: 20px;
-    padding: 20px;
-}
-
-.submit-btn:hover {
-    background-color: #810202;
-}

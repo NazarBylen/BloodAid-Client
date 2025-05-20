@@ -5,7 +5,7 @@ import "./style.css"
 import {DeleteClinic, GetClinicInfo} from "../../api/clinicAuth.js";
 
 const ClinicProfile = () => {
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
     const [currentClinic, setCurrentClinic] = useState(null)
 
@@ -22,7 +22,7 @@ const ClinicProfile = () => {
                 console.log(err);
             })
         localStorage.clear()
-        navigate("/not-patient")
+        navigate("/")
     }
 
     useEffect(()=>{

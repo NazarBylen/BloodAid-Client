@@ -1,23 +1,82 @@
-.home-root {
+.home-base {
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  background: linear-gradient(#550000, #000000);
-  text-align: center;
-  padding: 0 20px;
+  padding: 70px 20px;
+  background-color: #fff !important;
+  background-image: none !important;
 }
 
-.company-name {
-  font-family: 'Arial Black', sans-serif;
-  font-size: 90px;
+
+.base-card {
+  border-radius: .25rem;
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+  border: 1px solid #dee2e6;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+
+.base-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.base-card .base-card-body {
+  flex: 0 0 60%;
+  padding: 1rem;
+}
+
+p {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: calc(1.2rem + 1vw);
+}
+
+.base-icons {
+  border-radius: 25%;
+  border: 3px solid #dc3545;
+  height: 300px;
+}
+
+.base-card img {
+  max-width: 250px;
+}
+
+.base-card button {
+  background-color: #dc3545;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.base-card button:hover {
+  background-color: #c82333;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 30px;
+}
+
+.logo-container img {
+  width: auto;
+  height: 55px;
+}
+
+
+.logo-container .logo-text {
+  font-size:40px;
   font-weight: bold;
-  color: #ffffff;
+  color: #dc3545;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  line-height: 1.2;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  margin-bottom: 20px;
 }
 
 .promo-text {
@@ -94,20 +153,15 @@
   margin-top: 20px;
 }
 
-.faq-btn {
-  background-color: #b91c1c;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.faq-wrapper button {
+  background-color: #dc3545;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 30px;
 }
 
-.faq-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(185, 28, 28, 0.5);
+.faq-wrapper button:hover {
+  background-color: #c82333;
 }
 
 .social-links {
@@ -124,15 +178,12 @@
 .social-links img {
   width: 40px;
   height: 40px;
-  fill: #ff1a1a;
-  filter: drop-shadow(0 0 4px #ff1a1a) drop-shadow(0 0 8px #ff1a1a);
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 
 .social-links a:hover {
   transform: scale(1.2);
-  filter: drop-shadow(0 0 6px #ff1a1a) drop-shadow(0 0 12px #ff1a1a);
 }
 
 

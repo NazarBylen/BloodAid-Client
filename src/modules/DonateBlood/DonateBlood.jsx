@@ -1,20 +1,13 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-import "./style.css";
 import { GetAllClinics } from "../../api/clinics.js";
 import DatePicker from "../../components/DatePicker/DatePicker.jsx";
 import {donateBloodToClinic} from "../../api/donateBlood.js";
 
 const DonationHistory = () => {
-    const navigate = useNavigate();
 
     const [currentClinics, setCurrentClinics] = useState([]);
     const [currentClinic, setCurrentClinic] = useState(null);
-
-    const back = () => {
-        navigate("/donor-home");
-    };
 
     const donateBlood = (clinicId) => {
         document.getElementById("myModal").style.display = "flex";
@@ -56,29 +49,42 @@ const DonationHistory = () => {
     }, []);
 
     return (
-        <div className="container-fluid profile-root">
-            <div className="container">
-                <p className="row company-name">Available donation requests :</p>
-                {currentClinics.length > 0 ? (
-                    <div className="donation-list">
+        <div>
+            <h1 className="h3 mb-4 text-gray-800">Запити від клінік</h1>
+
+            {
+                currentClinics.length ? (
+                    <div className="row">
                         {currentClinics.map((clinic) => (
-                            <div className="donation-card" key={clinic.id}>
-                                <span className="donation-name">{clinic.city}</span>
-                                <span className="donation-name">{clinic.name}</span>
-                                <button
-                                    className="view-button"
-                                    onClick={() => donateBlood(clinic.id)}
-                                >
-                                    Donate Blood
-                                </button>
+                            <div key={clinic.id} className="col-xl-6 col-md-6 mb-3">
+                                <div className="card border-left-info shadow h-100 py-2">
+                                    <div className="card-body">
+                                        <div className="row no-gutters align-items-center">
+                                            <div className="col mr-2">
+                                                <div
+                                                    className="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                    {clinic.city}
+                                                </div>
+                                                <div className="h5 mb-0 font-weight-bold text-gray-800">{clinic.name}</div>
+                                            </div>
+                                            <div className="col-auto">
+                                                <button
+                                                    className="view-button"
+                                                    onClick={() => donateBlood(clinic.id)}
+                                                >
+                                                    Записатись на донацію крові
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         ))}
                     </div>
                 ) : (
-                    <p className="promo-text text-center">No clinics available</p>
-                )}
-                <button className="def-btn" onClick={back}>back</button>
-            </div>
+                    <p className="promo-text text-center">Запитів немає</p>
+                )
+            }
 
             <div id="myModal" className="modal-overlay">
                 <div className="modal-content">

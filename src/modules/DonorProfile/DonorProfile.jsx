@@ -1,11 +1,9 @@
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-
-import "./style.css"
 import {DeleteDonor, GetDonorInfo} from "../../api/donors.js";
 
 const DonorProfile = () => {
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
     const [currentDonor, setCurrentDonor] = useState(null)
 
@@ -28,6 +26,11 @@ const DonorProfile = () => {
         navigate("/")
     }
 
+    useEffect(() => {
+        const donorId = localStorage.getItem("donorId")
+        if(!donorId) navigate("/donor-login")
+    });
+
     useEffect(()=>{
 
         const donorId = localStorage.getItem("donorId")
@@ -43,48 +46,61 @@ const DonorProfile = () => {
     }, [])
 
     return (
-        <div className="container-fluid profile-root">
-            <div className="container">
-                <p className="row company-name">Donor profile Information</p>
-                {currentDonor ?
-                    <div className="row info">
-                        <div className="col-6 info-text">
-                            Id :
+        <div>
+            <h1 className="h3 mb-4 text-gray-800">Мій профайл</h1>
+            {
+                currentDonor ? (
+                    <div className="row">
+                        <div className="col-2">
+                            ID:
                         </div>
-                        <div className="col-6">
+                        <div className="col-10">
                             {currentDonor.id}
                         </div>
-                        <div className="col-6 info-text">
-                            Email :
+                        <div className="col-2">
+                            Email:
                         </div>
-                        <div className="col-6">
+                        <div className="col-10">
                             {currentDonor.email}
                         </div>
-                        <div className="col-6 info-text">
-                            Name :
+                        <div className="col-2">
+                            Ім&#39;я:
                         </div>
-                        <div className="col-6">
+                        <div className="col-10">
                             {currentDonor.fullName}
                         </div>
-                        <div className="col-6 info-text">
-                            Rh Factor :
+                        <div className="col-2">
+                            Rh фактор:
                         </div>
-                        <div className="col-6">
+                        <div className="col-10">
                             {currentDonor.rh_factor}
                         </div>
-                        <div className="col-6 info-text">
-                            Blood Type :
+                        <div className="col-2">
+                            Тип крові:
                         </div>
-                        <div className="col-6">
+                        <div className="col-10">
                             {currentDonor.blood_type}
                         </div>
-                        <button className="def-btn" onClick={navigateToChangePassword}>Change Password</button>
-                        <button className="def-btn" onClick={navigateToEditProfile}>Edit Profile</button>
-                        <button className="def-btn" onClick={deleteDonorAccount}>DELETE ACCOUNT</button>
+                        <div className="row mt-3">
+                            <div className="col-auto">
+                                <button className="btn btn-primary btn-user btn-block"
+                                        onClick={navigateToEditProfile}>Редагувати профайл
+                                </button>
+                            </div>
+                            <div className="col-auto">
+                                <button className="btn btn-primary btn-user btn-block"
+                                        onClick={navigateToChangePassword}>Змінити пароль
+                                </button>
+                            </div>
+                            <div className="col-auto">
+                                <button className="btn btn-outline-primary btn-user btn-block"
+                                        onClick={deleteDonorAccount}>Видалити акаунт
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    : null
-                }
-            </div>
+                ) : null
+            }
         </div>
     )
 }

@@ -1,69 +1,79 @@
-import {useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
-import "./style.css"
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const DonorHome = () => {
+
     const navigate = useNavigate();
 
-    const [donorId, setDonorId] = useState(null)
-    const [donorName, setDonorName] = useState(null)
-
-    const login = () => navigate("/donor-login")
-    const myProfile = () => navigate("/donor-profile")
-    const signup = () => navigate("/donor-signup")
-    const logout = () => {
-        localStorage.clear()
-        window.location.reload();
-    }
-
-    const back = () => {
-        navigate("/")
-    }
-
-    const iwantToDonateBlood = () => {
-        navigate("/donor/donate-blood")
-    }
-
-    const donatHistory = () => {
-        navigate("/donor/donation-history")
-    }
-
     useEffect(() => {
-        const currentDonor = localStorage.getItem("donorId")
-        const currentDonorName = localStorage.getItem("donorName")
-
-        setDonorId(currentDonor)
-        setDonorName(currentDonorName)
-    }, [])
+        const donorId = localStorage.getItem("donorId")
+        if(!donorId) navigate("/donor-login")
+    });
 
     return (
-        <div className="container-fluid home-root">
-            {donorId ?
-                <div className="container">
-                    <p className="company-name text-center">Blood Aid</p>
-                    <p className="promo-text text-center">Welcome, {donorName?.replaceAll('"', '')}!</p>
-                    <div>
-                        <button onClick={myProfile} className="def-btn">My Profile</button>
-                        <button onClick={logout} className="def-btn">LOG OUT</button>
-                    </div>
-                    <div>
-                        <button onClick={iwantToDonateBlood} className="def-btn1">I want to donate Blood</button>
-                        <button onClick={donatHistory} className="def-btn1">See my donation history</button>
-                    </div>
-                </div>
-                :
-                <div className="container">
-                    <p className="company-name text-center">Blood Aid</p>
-                    <p className="promo-text text-center">Give Blood, Save Lives.!</p>
-                    <div>
-                        <button onClick={login} className="def-btn">LOGIN</button>
-                        <button onClick={signup} className="def-btn">SIGN UP</button>
-                    </div>
-                    <div>
-                        <button onClick={back} className="def-btn">Back</button>
+        <div>
+            <h1 className="h3 mb-4 text-gray-800">Dashboard</h1>
+            <div className="row">
+                <div className="col-xl-6 col-md-6 mb-6">
+                    <div className="card border-left-primary shadow h-100 py-2">
+                        <div className="card-body">
+                            <div className="row no-gutters align-items-center">
+                                <div className="col mr-2">
+                                    <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Дата останньої донації крові
+                                    </div>
+                                    <div className="h5 mb-0 font-weight-bold text-gray-800">19 травня 2025</div>
+                                </div>
+                                <div className="col-auto">
+                                    <i className="fas fa-calendar fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            }
+
+                <div className="col-xl-6 col-md-6 mb-6">
+                    <div className="card border-left-primary shadow h-100 py-2">
+                        <div className="card-body">
+                            <div className="row no-gutters align-items-center">
+                                <div className="col mr-2">
+                                    <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Кількість донацій крові
+                                    </div>
+                                    <div className="h5 mb-0 font-weight-bold text-gray-800">15</div>
+                                </div>
+                                <div className="col-auto">
+                                    <i className="fas fa-calendar fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div className="row">
+                <div className="col-lg-6">
+                    <div className="card shadow mb-4">
+                        <div className="card-header py-3">
+                            <h6 className="m-0 font-weight-bold text-primary">Прогноз попиту на кров</h6>
+                        </div>
+                        <div className="card-body">
+                            тут прогноз
+                        </div>
+                    </div>
+                </div>
+
+                <div className="col-lg-6">
+                    <div className="card shadow mb-4">
+                        <div className="card-header py-3">
+                            <h6 className="m-0 font-weight-bold text-primary">Запити від клінік</h6>
+                        </div>
+                        <div className="card-body">
+                            тут запити
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

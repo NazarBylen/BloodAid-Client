@@ -1,7 +1,5 @@
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-
-import "./style.css"
 import {getDonations} from "../../api/donation.js";
 import {GetClinicInfo} from "../../api/clinicAuth.js";
 
@@ -12,9 +10,6 @@ const AllDonations = () => {
     const [currentDonations, setCurrentDonations] = useState([])
     const [filteredDonations, setFilteredDonations] = useState([]);
 
-    const back = () => {
-        navigate("/not-patient")
-    }
 
     useEffect(()=>{
 
@@ -45,28 +40,38 @@ const AllDonations = () => {
     }, [currentDonations])
 
     return (
-        <div className="container-fluid profile-root">
-            <div className="container">
-                <p className="row company-name">Available donation requests :</p>
-                    {filteredDonations.length > 0 ? (
-                        <div className="donation-list">
-                            {filteredDonations.map(donation => (
-                                <div className="donation-card" key={donation.id}>
-                                    <span className="donation-name">{donation.patient.fullName}</span>
-                                    <button
-                                        className="view-button"
-                                        onClick={() => navigate(`/donation/${donation.id}`)}
-                                    >
-                                        View Request
-                                    </button>
+        <div>
+
+            <h1 className="h3 mb-4 text-gray-800">Запити від апацієнтів</h1>
+
+            {filteredDonations.length ? (
+                <div className="row">
+                    {filteredDonations.map(donation => (
+                        <div key={donation.id} className="col-xl-6 col-md-6 mb-3">
+                            <div className="card border-left-info shadow h-100 py-2">
+                                <div className="card-body">
+                                    <div className="row no-gutters align-items-center">
+                                        <div className="col mr-2">
+
+                                            <div className="h5 mb-0 font-weight-bold text-gray-800">{donation.patient.fullName}</div>
+                                        </div>
+                                        <div className="col-auto">
+                                            <button
+                                                className="view-button"
+                                                onClick={() => navigate(`/donation/${donation.id}`)}
+                                            >
+                                                Переглянути запит
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
-                            ))}
+                            </div>
                         </div>
-                    ) : (
-                        <p className="promo-text text-center">No donations for this clinic</p>
-                    )}
-                <button className="def-btn" onClick={back}>back</button>
-            </div>
+                    ))}
+                </div>
+            ) : (
+                <p className="promo-text text-center">Запитів немає</p>
+            )}
         </div>
     )
 }

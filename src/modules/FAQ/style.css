@@ -11,16 +11,6 @@
     z-index: 1;
 }
 
-/* Додаємо до всього body анімований градієнт */
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(-45deg, #1a0000, #330000, #1a0000, #000000);
-    background-size: 400% 400%;
-    animation: gradientAnimation 7s ease infinite;
-    min-height: 100vh;
-}
-
 /* Плавна зміна кольорів */
 @keyframes gradientAnimation {
     0% {
