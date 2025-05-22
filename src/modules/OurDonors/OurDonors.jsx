@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import {getBloodDonatesByDonor} from "../../api/donateBlood.js";
+import {getBloodDonatesByClinic} from "../../api/donateBlood.js";
 
-const DonationHistory = () => {
+const OurDonors = () => {
 
     const [currentDonations, setCurrentDonations] = useState([]);
 
     useEffect(() => {
-        const donorId = localStorage.getItem("donorId");
+        const clinicId = localStorage.getItem("clinicId");
 
-        getBloodDonatesByDonor(donorId)
+        getBloodDonatesByClinic(clinicId)
             .then((res) => {
                 setCurrentDonations(res.data);
             })
@@ -19,7 +19,7 @@ const DonationHistory = () => {
 
     return (
         <div>
-            <h1 className="h3 mb-4 text-gray-800">Мої донації</h1>
+            <h1 className="h3 mb-4 text-gray-800">Наші донори та історія донацій</h1>
             {currentDonations.length ? (
                 <div className="row">
                     {currentDonations.map((donation) => (
@@ -30,17 +30,16 @@ const DonationHistory = () => {
                                         <div className="col mr-2">
                                             <div
                                                 className="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                {donation.clinic.city}
+                                                {donation.donor.email}
                                             </div>
                                             <div
-                                                className="h5 mb-0 font-weight-bold text-gray-800">{donation.clinic.name}</div>
+                                                className="h5 mb-0 font-weight-bold text-gray-800">{donation.donor.fullName}</div>
                                         </div>
                                         <div className="col">{donation.dateRequestedToDonateBlood}</div>
+                                        <div className="col">Група крові: {donation.donor.blood_type}</div>
+                                        <div className="col">Резус-фактор: {donation.donor.rh_factor}</div>
                                         <div className="col-auto">
-                                            {donation.acceptedOrRejected ?
-                                                <i className="fas fa-check fa-2x text-green-300"></i> :
-                                                <i className="fas fa-times fa-2x" style={{color: "red"}}></i>
-                                            }
+                                            <i className="fas fa-check fa-2x text-green-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -59,4 +58,4 @@ const DonationHistory = () => {
     ;
 };
 
-export default DonationHistory;
+export default OurDonors;

@@ -29,6 +29,8 @@ import FAQPage from "./modules/FAQ/FAQPage.jsx";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
 import DonorDashboardLayout from "./components/Layout/DonorDashboardLayout.jsx";
 import ClinicDashboardLayout from "./components/Layout/ClinicDashboardLayout.jsx";
+import DonorRequests from "./modules/DonorRequests/DonorRequests.jsx";
+import OurDonors from "./modules/OurDonors/OurDonors.jsx";
 
 const BaseHome = lazy(() => import('./modules/BaseHome/BaseHome.jsx'));
 
@@ -54,8 +56,6 @@ const AppRoutes = () => {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/change-password" element={<ChangePassword />} />
                 <Route path="/edit-profile" element={<EditProfile />} />
-                <Route path="/donation/edit/:id" element={<EditClinicDonation />} />
-                <Route path="/donation/:id" element={<SingleDonation />} />
 
                 {/* Клініка */}
                 <Route path="/clinic-signup" element={<ClinicSignup />} />
@@ -67,9 +67,12 @@ const AppRoutes = () => {
                     <Route path="/clinic-donations" element={<ClinicDonations />} />
                     <Route path="/clinic-donation/edit-donation/:id" element={<EditClinicDonation />} />
                     <Route path="/clinic-donation/:id" element={<ClinicSingleDonation />} />
+                    <Route path="/donation/edit/:id" element={<EditClinicDonation />} />
+                    <Route path="/donation/:id" element={<SingleDonation />} />
                     <Route path="/all-donations" element={<AllDonations />} />
-                    <Route path="/donor-requests" element={<div>Donor Requests</div>} />
-                    <Route path="/our-donors" element={<div>Our Donors</div>} />
+                    <Route path="/donor-requests" element={<DonorRequests />} />
+                    <Route path="/our-donors" element={<OurDonors />} />
+
                 </Route>
 
                 {/* Донор */}
